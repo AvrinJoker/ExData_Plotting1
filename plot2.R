@@ -6,7 +6,7 @@ skip_lines = as.numeric(time1)*24*3600/60
 time2 = strptime("03/02/07 00:00:00","%d/%m/%y %H:%M:%S")-strptime("01/02/07 00:00:00","%d/%m/%y %H:%M:%S")
 read_lines = as.numeric(time2)*24*3600/60
 # read the data needed
-data = read.table("./household_power_consumption.txt",nrow=read_lines, header=T,skip = skip_lines+1,  sep = ";")
+data = read.table("./household_power_consumption.txt",nrow=read_lines, header=T,skip = skip_lines+1,  sep = ";", na.strings = "?")
 names(data) = names(read.table("./household_power_consumption.txt",nrow=1, sep = ";", header = T))
 # add another colum with date and time as a time object
 datetime = strptime(paste(data$Date, data$Time, sep = ''), format = "%d/%m/%Y %H:%M:%S")
